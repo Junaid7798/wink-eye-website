@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { FocusReveal } from "./FocusReveal";
 
 const reviews = [
     { name: "Jessica", text: "My appointment with Dr. Patel was the best eye experience I've had in years! The staff are professional, very sweet, and knowledgeable." },
@@ -17,9 +18,24 @@ const reviews = [
     { name: "Amanda H.", text: "As someone who wears specialty contacts, I appreciate Dr. Patel's expertise in fitting. She got it right on the first try!" },
 ];
 
+function useSlidesPerView() {
+    const [slidesPerView, setSlidesPerView] = useState(3);
+    useEffect(() => {
+        const update = () => {
+            if (window.innerWidth < 640) setSlidesPerView(1);
+            else if (window.innerWidth < 1024) setSlidesPerView(2);
+            else setSlidesPerView(3);
+        };
+        update();
+        window.addEventListener("resize", update);
+        return () => window.removeEventListener("resize", update);
+    }, []);
+    return slidesPerView;
+}
+
 export default function Testimonials() {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const slidesPerView = 3;
+    const slidesPerView = useSlidesPerView();
     const totalSlides = Math.ceil(reviews.length / slidesPerView);
 
     const nextSlide = useCallback(() => {
@@ -29,6 +45,9 @@ export default function Testimonials() {
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
     };
+
+    // Reset to slide 0 when slidesPerView changes to avoid out-of-bounds
+    useEffect(() => { setCurrentSlide(0); }, [slidesPerView]);
 
     // Auto-slide every 5 seconds
     useEffect(() => {
@@ -42,32 +61,27 @@ export default function Testimonials() {
     );
 
     return (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-14 sm:py-20 relative overflow-hidden">
             {/* Soft background */}
             <div className="absolute inset-0 bg-mesh-soft" />
             <div className="absolute inset-0 bg-dot-grid opacity-30" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-                <m.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center max-w-2xl mx-auto mb-16"
-                >
+                <FocusReveal className="text-center max-w-2xl mx-auto mb-16">
                     <div className="flex justify-center items-center gap-1 text-accent mb-6">
                         {[1, 2, 3, 4, 5].map(i => (
                             <Star key={i} fill="currentColor" size={22} className="drop-shadow-sm" />
                         ))}
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-900 mb-5">
+                    <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-900 mb-5">
                         What Our Patients{" "}
                         <span className="text-gradient-primary">Say</span>
                     </h2>
                     <p className="text-lg text-text-muted">
                         ⭐ 4.8 Average Rating on Google — trusted by families across Abington.
                     </p>
-                </m.div>
+                </FocusReveal>
 
                 {/* Slider */}
                 <div className="relative">
@@ -78,12 +92,13 @@ export default function Testimonials() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -40 }}
                             transition={{ duration: 0.4 }}
-                            className="grid md:grid-cols-3 gap-6"
+                            className="grid gap-5 sm:gap-6"
+                            style={{ gridTemplateColumns: `repeat(${slidesPerView}, 1fr)` }}
                         >
                             {currentReviews.map((r, i) => (
                                 <div
                                     key={`${currentSlide}-${i}`}
-                                    className="glass-card rounded-3xl p-8 relative group hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-500/8 transition-all duration-500"
+                                    className="glass-card rounded-3xl p-5 sm:p-8 relative group hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-500/8 transition-all duration-500"
                                 >
                                     {/* Decorative quote */}
                                     <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -96,7 +111,7 @@ export default function Testimonials() {
                                     </div>
 
                                     {/* Quote */}
-                                    <p className="text-text-main italic leading-relaxed mb-8 relative z-10 min-h-[110px] font-serif text-lg tracking-wide">
+                                    <p className="text-text-main italic leading-relaxed mb-5 sm:mb-8 relative z-10 min-h-[80px] sm:min-h-[110px] font-serif text-base sm:text-lg tracking-wide">
                                         &ldquo;{r.text}&rdquo;
                                     </p>
 
@@ -115,14 +130,14 @@ export default function Testimonials() {
                     {/* Navigation Arrows */}
                     <button
                         onClick={prevSlide}
-                        className="absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 w-12 h-12 glass-strong rounded-full flex items-center justify-center text-primary-700 hover:bg-primary-600 hover:text-white transition-all shadow-lg hover:shadow-xl z-20"
+                        className="hidden sm:flex absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 glass-strong rounded-full items-center justify-center text-primary-700 hover:bg-primary-600 hover:text-white transition-all shadow-lg hover:shadow-xl z-20"
                         aria-label="Previous testimonials"
                     >
                         <ChevronLeft size={22} />
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 w-12 h-12 glass-strong rounded-full flex items-center justify-center text-primary-700 hover:bg-primary-600 hover:text-white transition-all shadow-lg hover:shadow-xl z-20"
+                        className="hidden sm:flex absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 glass-strong rounded-full items-center justify-center text-primary-700 hover:bg-primary-600 hover:text-white transition-all shadow-lg hover:shadow-xl z-20"
                         aria-label="Next testimonials"
                     >
                         <ChevronRight size={22} />

@@ -2,6 +2,7 @@
 
 import { m } from "framer-motion";
 import Image from "next/image";
+import { FocusReveal } from "./FocusReveal";
 
 const servicesList = [
     { title: "Routine Eye Exams", icon: "routine_exam.png", desc: "Thorough, comprehensive eye exams for the whole family using the latest diagnostic technology." },
@@ -24,24 +25,18 @@ export default function ServicesGrid() {
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
 
                 {/* Header */}
-                <m.div
-                    initial={{ opacity: 0, y: 25 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center max-w-4xl mx-auto mb-24"
-                >
+                <FocusReveal className="text-center max-w-4xl mx-auto mb-12 md:mb-24">
                     <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass text-sm font-bold uppercase tracking-[0.15em] text-primary-700 mb-6 shadow-sm">
                         Our Services
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-primary-900 mb-8 leading-tight">
+                    <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-primary-900 mb-5 sm:mb-8 leading-tight">
                         Personalized eye care for{" "}
                         <span className="text-gradient-primary">every stage</span> of life.
                     </h2>
                     <p className="text-xl text-text-muted leading-relaxed max-w-2xl mx-auto">
                         From routine exams to advanced treatments, we offer the latest in lens technology and personalized care plans.
                     </p>
-                </m.div>
+                </FocusReveal>
 
                 {/* Grid - 4 Columns, 2 Rows */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-12">

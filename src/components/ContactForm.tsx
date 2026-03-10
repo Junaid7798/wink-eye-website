@@ -63,7 +63,7 @@ export default function ContactForm() {
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-bold uppercase tracking-[0.15em] text-primary-700 mb-5">
                         Get In Touch
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-900 mb-5">
+                    <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-900 mb-5">
                         Contact <span className="text-gradient-primary">Us</span>
                     </h2>
                     <p className="text-lg text-text-muted max-w-lg mx-auto">
@@ -82,7 +82,7 @@ export default function ContactForm() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl border border-primary-100/50 min-h-[400px]"
+                            className="relative w-full rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-primary-100/50 min-h-[220px] sm:min-h-[400px]"
                         >
                             <Image
                                 src="/images/Building exterior.png"
@@ -220,9 +220,9 @@ export default function ContactForm() {
                         transition={{ delay: 0.4 }}
                         className="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-2xl border border-primary-50 w-full max-w-full mt-8"
                     >
-                        <h3 className="font-serif font-bold text-3xl text-primary-900 mb-10 text-center">Send Us a Message</h3>
+                        <h3 className="font-serif font-bold text-2xl sm:text-3xl text-primary-900 mb-7 sm:mb-10 text-center">Send Us a Message</h3>
                         <form onSubmit={handleSubmit} className="space-y-8">
-                            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-8">
                                 <div>
                                     <label className="block text-sm font-bold text-primary-900 mb-3">Full Name <span className="text-accent">*</span></label>
                                     <input

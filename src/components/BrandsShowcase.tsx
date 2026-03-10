@@ -2,6 +2,7 @@
 
 import { m } from "framer-motion";
 import Image from "next/image";
+import { FocusReveal } from "./FocusReveal";
 
 const brands = [
     { name: "Bebe", logo: "bebe-logo.png" },
@@ -40,22 +41,17 @@ export default function BrandsShowcase() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-                    <m.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-xl"
-                    >
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-20 gap-6 sm:gap-8">
+                    <FocusReveal className="max-w-xl">
                         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass bg-white/80 backdrop-blur-md text-xs font-bold uppercase tracking-[0.15em] text-primary-700 mb-5 shadow-sm border border-primary-100">
                             Our Collection
                         </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-900 leading-tight">
+                        <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-900 leading-tight">
                             Designer Brands.
                             <br />
                             <span className="text-gradient-primary">Uncompromised Style.</span>
                         </h2>
-                    </m.div>
+                    </FocusReveal>
                     <m.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +70,7 @@ export default function BrandsShowcase() {
                         {duplicatedBrands.map((brand, idx) => (
                             <div
                                 key={`r1-${idx}`}
-                                className="glass-card h-32 w-56 flex-shrink-0 flex items-center justify-center rounded-[2rem] p-6 shadow-xl hover:shadow-2xl hover:scale-[1.05] transition-all duration-300 bg-white/90 backdrop-blur-md border border-primary-50/50"
+                                className="glass-card h-24 w-36 sm:h-32 sm:w-56 flex-shrink-0 flex items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 shadow-xl hover:shadow-2xl hover:scale-[1.05] transition-all duration-300 bg-white/90 backdrop-blur-md border border-primary-50/50"
                             >
                                 <Image
                                     src={`/images/${brand.logo}`}

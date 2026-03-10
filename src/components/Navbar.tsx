@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { MagneticButton } from "./MagneticButton";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -80,13 +81,14 @@ export default function Navbar() {
                             <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] group-hover:w-3/4 transition-all duration-300 rounded-full ${pastHero ? "bg-gradient-to-r from-accent to-white" : "bg-gradient-to-r from-primary-400 to-primary-600"}`} />
                         </Link>
                     ))}
-                    <a
-                        href="https://winkeyecareoptical.itrust.io/appointment"
-                        className={`ml-3 px-6 py-2.5 rounded-full font-bold text-[13px] transition-all hover:-translate-y-0.5 active:translate-y-0 duration-300 ${pastHero ? "bg-white text-primary-800 shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_6px_25px_rgba(255,255,255,0.35)]" : "bg-primary-600 text-white shadow-[0_4px_20px_rgba(10,126,154,0.25)] hover:shadow-[0_6px_25px_rgba(10,126,154,0.4)] hover:bg-primary-700"}`}
-                        target="_blank" rel="noopener noreferrer"
+                    <MagneticButton
+                        href="https://calendar.app.google/Ke2Rg6r8pgH8d5MCA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`ml-3 px-6 py-2.5 rounded-full font-bold text-[13px] duration-300 ${pastHero ? "bg-white text-primary-800 shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_6px_25px_rgba(255,255,255,0.35)]" : "bg-primary-600 text-white shadow-[0_4px_20px_rgba(10,126,154,0.25)] hover:shadow-[0_6px_25px_rgba(10,126,154,0.4)] hover:bg-primary-700"}`}
                     >
                         Schedule Appointment
-                    </a>
+                    </MagneticButton>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -126,7 +128,7 @@ export default function Navbar() {
                             </m.div>
                         ))}
                         <a
-                            href="https://winkeyecareoptical.itrust.io/appointment"
+                            href="https://calendar.app.google/Ke2Rg6r8pgH8d5MCA"
                             className="w-full py-4 rounded-full bg-primary-600 text-white font-bold flex justify-center mt-4 shadow-lg"
                             target="_blank" rel="noopener noreferrer"
                         >

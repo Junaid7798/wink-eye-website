@@ -5,6 +5,7 @@ import type { Variants } from "framer-motion";
 import { Calendar, Phone, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { MagneticButton } from "./MagneticButton";
 
 const images = [
     "/images/dr-patel-clinic.png",
@@ -64,7 +65,7 @@ export default function Hero() {
             <div className="absolute inset-0 z-10 bg-gradient-to-r from-primary-900/90 via-primary-900/50 to-primary-900/30" />
 
             {/* ── Main Content ── */}
-            <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 sm:px-12 text-left text-white mt-8 mb-32 md:mb-24 lg:mt-16">
+            <div className="relative z-20 w-full max-w-[1400px] mx-auto px-5 sm:px-12 text-left text-white mt-4 sm:mt-8 mb-40 sm:mb-32 md:mb-24 lg:mt-16">
                 <div className="max-w-[750px]">
                     {/* Tag pill */}
                     <m.div
@@ -89,7 +90,7 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.3}
-                        className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-serif font-extrabold leading-[1.05] tracking-tight mb-8"
+                        className="text-[2rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-extrabold leading-[1.1] tracking-tight mb-5 sm:mb-8"
                     >
                         Comprehensive
                         <br />
@@ -104,7 +105,7 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.5}
-                        className="text-base sm:text-lg md:text-2xl text-white/80 leading-relaxed font-medium mb-10"
+                        className="text-sm sm:text-lg md:text-2xl text-white/80 leading-relaxed font-medium mb-6 sm:mb-10"
                     >
                         Providing patients with high quality eye exams, designer eyeglasses, and contact lenses — all under one roof in{" "}
                         <span className="text-white font-bold tracking-wide">Abington, PA.</span>
@@ -116,32 +117,32 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.7}
-                        className="flex flex-col sm:flex-row items-start sm:items-center gap-4 relative z-50"
+                        className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 relative z-50"
                     >
-                        <a
-                            href="https://winkeyecareoptical.itrust.io/appointment"
-                            className="group relative flex items-center justify-center gap-2.5 bg-white text-primary-900 px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-[15px] sm:text-[16px] transition-all duration-300 transform hover:scale-105 shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.4)] overflow-hidden w-full sm:w-auto"
+                        <MagneticButton
+                            href="https://calendar.app.google/Ke2Rg6r8pgH8d5MCA"
                             target="_blank"
                             rel="noopener noreferrer"
+                            className="group relative flex items-center justify-center gap-2.5 bg-white text-primary-900 px-6 sm:px-10 py-3.5 sm:py-5 rounded-full font-bold text-[14px] sm:text-[16px] shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.4)] overflow-hidden w-full sm:w-auto"
                         >
                             <Calendar size={20} className="relative z-10 text-primary-600 group-hover:rotate-12 transition-transform duration-300" />
                             <span className="relative z-10">Schedule Your Appointment Today</span>
                             <div className="absolute inset-0 bg-primary-50 -translate-x-full group-hover:translate-x-full transition-transform duration-[800ms] pointer-events-none" />
-                        </a>
+                        </MagneticButton>
 
-                        <a
+                        <MagneticButton
                             href="tel:215-935-6320"
-                            className="group flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-[15px] sm:text-[16px] hover:bg-white/20 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
+                            className="group flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/30 text-white px-6 sm:px-10 py-3.5 sm:py-5 rounded-full font-bold text-[14px] sm:text-[16px] hover:bg-white/20 w-full sm:w-auto"
                         >
                             <Phone size={20} className="text-white/80 group-hover:animate-bounce" />
                             <span>215-935-6320</span>
-                        </a>
+                        </MagneticButton>
                     </m.div>
                 </div>
             </div>
 
             {/* ── Bottom Controls: Dots & Scroll ── */}
-            <div className="absolute z-20 bottom-24 sm:bottom-20 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 sm:gap-8 pb-4">
+            <div className="absolute z-20 bottom-6 sm:bottom-16 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 sm:gap-8 pb-2">
                 {/* Slider Navigation Dots */}
                 <div className="flex items-center gap-3">
                     {images.map((_, idx) => (

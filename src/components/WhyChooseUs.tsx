@@ -3,6 +3,7 @@
 import { m } from "framer-motion";
 import { Clock, Smartphone, Glasses, ShieldCheck, Gem, Car } from "lucide-react";
 import Image from "next/image";
+import { FocusReveal } from "./FocusReveal";
 
 const differentiators = [
     { icon: Clock, title: "Ample Time", desc: "She believes in spending ample time with each patient to deliver personalized, thorough care." },
@@ -34,23 +35,18 @@ export default function WhyChooseUs() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-                <m.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center max-w-2xl mx-auto mb-16"
-                >
+                <FocusReveal className="text-center max-w-2xl mx-auto mb-16">
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs font-bold uppercase tracking-[0.15em] text-primary-200 mb-6">
                         Why Choose Us
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold text-white mb-6 leading-tight">
+                    <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold text-white mb-6 leading-tight">
                         Why Choose{" "}
                         <span className="text-gradient-accent">Wink Eye Care?</span>
                     </h2>
                     <p className="text-lg text-primary-100/60 leading-relaxed">
                         Providing patients with high quality eye exams, eyeglasses, and contact lenses with a personal touch.
                     </p>
-                </m.div>
+                </FocusReveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {differentiators.map((diff, idx) => (
@@ -60,7 +56,7 @@ export default function WhyChooseUs() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.08 }}
-                            className="glass-card-dark rounded-3xl p-8 group hover:bg-white/10 transition-all duration-500 hover:-translate-y-1"
+                            className="glass-card-dark rounded-3xl p-5 sm:p-8 group hover:bg-white/10 transition-all duration-500 hover:-translate-y-1"
                         >
                             <div className="w-14 h-14 bg-accent/15 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:bg-accent/25 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-accent/10">
                                 <diff.icon size={26} />

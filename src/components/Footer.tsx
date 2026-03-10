@@ -1,6 +1,7 @@
 import { Eye, Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { MagneticButton } from "./MagneticButton";
 
 export default function Footer() {
     return (
@@ -28,20 +29,20 @@ export default function Footer() {
                         <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 via-primary-900/50 to-transparent" />
                     </div>
 
-                    <div className="relative z-10 py-28 px-8 md:py-36 md:px-24 flex flex-col items-center justify-center gap-10 text-center">
-                        <div className="text-white max-w-3xl">
-                            <h2 className="text-5xl md:text-7xl font-serif font-extrabold mb-4 leading-tight">
+                    <div className="relative z-10 py-16 px-5 sm:py-24 sm:px-10 md:py-36 md:px-24 flex flex-col items-start justify-center gap-6 sm:gap-10 text-left">
+                        <div className="text-white max-w-lg">
+                            <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif font-extrabold mb-4 leading-tight">
                                 SEE AND BE SEEN
                             </h2>
                         </div>
                         <div className="shrink-0 mt-2">
-                            <a
-                                href="https://winkeyecareoptical.itrust.io/appointment"
-                                className="inline-block px-12 py-6 text-lg bg-white text-primary-900 font-bold rounded-full hover:bg-primary-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 active:scale-95 duration-300"
+                            <MagneticButton
+                                href="https://calendar.app.google/Ke2Rg6r8pgH8d5MCA"
+                                className="inline-block px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg bg-white text-primary-900 font-bold rounded-full hover:bg-primary-50 shadow-xl hover:shadow-2xl duration-300"
                                 target="_blank" rel="noopener noreferrer"
                             >
                                 Schedule Your Appointment Today
-                            </a>
+                            </MagneticButton>
                         </div>
                     </div>
                 </div>

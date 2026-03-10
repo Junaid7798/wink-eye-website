@@ -18,6 +18,7 @@ const playfair = Playfair_Display({
 
 import { LocalBusinessSchema } from "@/components/Schema";
 import { MotionProvider } from "@/components/MotionProvider";
+import { EyeCursor } from "@/components/EyeCursor";
 
 export const metadata: Metadata = {
   title: "Wink Eye Care & Optical | Comprehensive Eye Care in Abington, PA",
@@ -46,6 +47,7 @@ export default function RootLayout({
       </head>
       <body className={`${jakarta.variable} ${playfair.variable} antialiased bg-background text-foreground`}>
         <MotionProvider>
+          <EyeCursor />
           {children}
         </MotionProvider>
       </body>

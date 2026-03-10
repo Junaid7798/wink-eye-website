@@ -40,8 +40,8 @@ export default function TrustBar() {
     return (
         <section className="relative z-20 mt-8">
             <div className="max-w-5xl mx-auto px-6">
-                <div className="glass-strong rounded-3xl shadow-xl py-8 px-4 md:px-8">
-                    <div className="grid grid-cols-3 gap-6 md:gap-8">
+                <div className="glass-strong rounded-3xl shadow-xl py-6 sm:py-8 px-5 sm:px-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-8">
                         {stats.map((stat, idx) => (
                             <m.div
                                 key={idx}
@@ -49,7 +49,7 @@ export default function TrustBar() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="flex flex-col items-center justify-center space-y-3 group"
+                                className="flex flex-row sm:flex-col items-center justify-start sm:justify-center gap-4 sm:gap-0 sm:space-y-3 group"
                             >
                                 <m.div
                                     initial={{ scale: 0.8 }}
@@ -60,7 +60,7 @@ export default function TrustBar() {
                                 >
                                     <stat.icon size={24} />
                                 </m.div>
-                                <div className="text-center">
+                                <div className="text-left sm:text-center">
                                     <h3 className="text-xl md:text-2xl font-serif font-extrabold text-primary-900">
                                         {stat.isAnimated ? (
                                             <>
